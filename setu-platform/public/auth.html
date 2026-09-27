@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setu — Portal Access</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <b>Setu</b>
+  <a href="index.html">Home</a>
+  <a href="auth.html" class="active">Portal Access</a>
+</nav>
+<main>
+  <h1>Portal access</h1>
+  <div class="tabs">
+    <button data-tab="login" class="on">Login</button>
+    <button data-tab="signup">Sign up</button>
+  </div>
+  <div id="authError"></div>
+  <form id="authForm">
+    <label>Email</label><input id="auth-email" type="email" placeholder="you@department.gov.in" required>
+    <label>Password</label><input id="auth-password" type="password" placeholder="••••••••" required minlength="6">
+    <label>Role</label>
+    <div class="role-cards">
+      <div class="role" data-role="gov" onclick="selectRole('gov')">
+        <h4>Government Portal</h4><p style="margin:0;color:var(--grey);font-size:.85em">Post challenges, evaluate, release payments</p>
+      </div>
+      <div class="role" data-role="startup" onclick="selectRole('startup')">
+        <h4>Startup Portal</h4><p style="margin:0;color:var(--grey);font-size:.85em">Discover, apply, track pilots</p>
+      </div>
+    </div>
+    <button class="cta" style="margin-top:14px" type="submit">Continue</button>
+  </form>
+  <p class="note">This demo backend accepts any email + 6-character-or-longer password and issues a real session token scoped to the role you pick — it does not check against a stored user list. Access to <code>government.html</code> and <code>startup.html</code> is enforced both by this token and by server-side route checks, so the URLs cannot be opened directly without logging in here first.</p>
+</main>
+<footer>Setu — SIH 2026 · SIH26136 · Team Skill_Forge! (T041).</footer>
+<script src="app.js"></script>
+</body>
+</html>

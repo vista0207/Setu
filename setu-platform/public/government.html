@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setu — Government Portal</title>
+<script>
+  // Client-side auth guard — runs before any page content is shown.
+  // The real enforcement is server-side (every /api/challenges and
+  // /api/applications/* write requires a valid "gov" session token);
+  // this guard just keeps someone from landing on the page UI at all
+  // without a matching session.
+  (function () {
+    var role = sessionStorage.getItem('setu_role');
+    var token = sessionStorage.getItem('setu_token');
+    if (role !== 'gov' || !token) {
+      alert('Access Denied: please log in as a Government Officer.');
+      window.location.href = 'auth.html';
+    }
+  })();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <b>Setu</b>
+  <a href="index.html">Home</a>
+  <span class="tag-role">Government Portal</span>
+  <button class="logout" onclick="logout()">Logout</button>
+</nav>
+<main>
+  <h1>Government portal</h1>
+  <div id="govError"></div>
+  <div class="tabs">
+    <button data-gtab="post" class="on">Post a challenge</button>
+    <button data-gtab="eval">Evaluate applications</button>
+    <button data-gtab="pilot">Pilot &amp; payments</button>
+  </div>
+
+  <div data-gpanel="post">
+    <form id="challengeForm">
+      <label>Title</label><input id="c-title" required placeholder="e.g. Smart Waste Segregation for Municipal Wards">
+      <label>Department</label><input id="c-dept" required placeholder="e.g. Ministry of Urban Affairs">
+      <label>Sector</label><input id="c-sector" required placeholder="e.g. CleanTech">
+      <label>Problem description</label><textarea id="c-desc" rows="3" required></textarea>
+      <label>Budget range (₹)</label><input id="c-budget" required placeholder="e.g. 20L – 80L">
+      <label>Target timeline</label><input id="c-timeline" required placeholder="e.g. 4 months">
+      <label>Max registration years allowed</label><input id="c-maxyears" type="number" required value="10">
+      <label>Minimum annual turnover required (₹)</label><input id="c-minturnover" type="number" required value="500000">
+      <button class="cta" style="margin-top:12px">Post challenge</button>
+    </form>
+  </div>
+
+  <div data-gpanel="eval" style="display:none" id="evalPanel"></div>
+  <div data-gpanel="pilot" style="display:none" id="pilotPanel"></div>
+</main>
+<footer>Setu — SIH 2026 · SIH26136 · Team Skill_Forge! (T041).</footer>
+<script src="app.js"></script>
+</body>
+</html>

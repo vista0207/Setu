@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setu — Startup Portal</title>
+<script>
+  // Client-side auth guard — see government.html for the matching comment.
+  // Real enforcement lives server-side on every /api/applications/* route.
+  (function () {
+    var role = sessionStorage.getItem('setu_role');
+    var token = sessionStorage.getItem('setu_token');
+    if (role !== 'startup' || !token) {
+      alert('Access Denied: please log in as a Startup Founder.');
+      window.location.href = 'auth.html';
+    }
+  })();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <b>Setu</b>
+  <a href="index.html">Home</a>
+  <span class="tag-role">Startup Portal</span>
+  <button class="logout" onclick="logout()">Logout</button>
+</nav>
+<main>
+  <h1>Startup portal</h1>
+  <div id="startupError"></div>
+  <div class="tabs">
+    <button data-stab="discover" class="on">Discover challenges</button>
+    <button data-stab="mine">My applications &amp; pilots</button>
+  </div>
+
+  <div data-spanel="discover" id="discoverPanel"></div>
+  <div data-spanel="mine" style="display:none" id="minePanel"></div>
+</main>
+<footer>Setu — SIH 2026 · SIH26136 · Team Skill_Forge! (T041).</footer>
+<script src="app.js"></script>
+</body>
+</html>

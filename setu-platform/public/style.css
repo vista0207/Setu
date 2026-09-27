@@ -1,0 +1,54 @@
+:root{
+  --navy:#0B2545; --ink:#14213D; --saffron:#E8A33D; --emerald:#1F7A5C;
+  --cream:#F7F5F0; --line:#DDD6C8; --grey:#6B7280; --bad:#B23A3A;
+  --bg:var(--cream); --fg:var(--ink); --card:#FFFFFF;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;min-height:100%}
+h1,h2,h3{font-family:Georgia,"Source Serif Pro",serif;font-weight:600;margin:0 0 .4em;color:var(--navy)}
+p{margin:0 0 1em;max-width:65ch}
+nav{position:sticky;top:0;z-index:10;background:var(--navy);color:#fff;display:flex;gap:4px;padding:10px 14px;flex-wrap:wrap;align-items:center}
+nav b{margin-right:auto;font-family:Georgia,serif;font-size:1.2em;letter-spacing:.02em}
+nav a,nav span.tag-role{color:#fff;text-decoration:none;padding:8px 12px;border-radius:6px;font-size:.92em;opacity:.85}
+nav a.active{background:var(--saffron);color:var(--navy);opacity:1;font-weight:600}
+nav button.logout{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;padding:7px 12px;border-radius:6px;cursor:pointer;font:inherit;font-size:.88em}
+main{max-width:960px;margin:0 auto;padding:28px 18px 60px}
+.hero{padding:20px 0 8px}
+.tag{color:var(--emerald);font-weight:600;font-size:.9em;margin-bottom:4px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px}
+.stat b{display:block;font-size:1.3em;color:var(--emerald)}
+.stat span{color:var(--grey);font-size:.85em}
+.steps{display:grid;gap:10px;margin:18px 0}
+.step{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;align-items:flex-start}
+.step em{font-style:normal;color:var(--saffron);font-family:Georgia,serif;font-size:1.3em;min-width:28px}
+.cta{display:inline-block;background:var(--saffron);color:var(--navy);padding:12px 22px;border-radius:6px;text-decoration:none;font-weight:600;border:none;cursor:pointer;font-size:1em}
+.note{border-left:3px solid var(--grey);padding:8px 12px;color:var(--grey);font-size:.88em;background:var(--card)}
+.role-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+@media(max-width:560px){.role-cards{grid-template-columns:1fr}}
+.role{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px;text-align:center;cursor:pointer}
+.role.active{border-color:var(--emerald);box-shadow:0 0 0 2px var(--emerald) inset}
+label{display:block;font-size:.85em;color:var(--grey);margin:10px 0 3px}
+input,select,textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit}
+form{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;margin:14px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;margin-bottom:12px}
+.card h4{margin:0 0 4px;font-family:inherit;color:var(--fg);font-size:1.05em}
+.row{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.badge{font-size:.78em;padding:3px 9px;border-radius:20px;font-weight:600}
+.badge.ok{background:#DDF0E6;color:var(--emerald)}
+.badge.bad{background:#F6DEDE;color:var(--bad)}
+.badge.pending{background:#F3E8D0;color:#8A6416}
+.bar{height:8px;background:var(--line);border-radius:6px;overflow:hidden;margin:6px 0}
+.bar > i{display:block;height:100%;background:var(--emerald)}
+.mile{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.mile span{font-size:.78em;padding:4px 8px;border-radius:5px;background:var(--line)}
+.mile span.paid{background:var(--emerald);color:#fff}
+.btn-sm{padding:6px 12px;font-size:.85em;border-radius:5px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.btn-sm.primary{background:var(--emerald);color:#fff;border-color:var(--emerald)}
+.btn-sm.danger{border-color:var(--bad);color:var(--bad)}
+.tabs{display:flex;gap:8px;margin:16px 0;border-bottom:1px solid var(--line)}
+.tabs button{background:none;border:none;padding:10px 4px;font:inherit;color:var(--grey);cursor:pointer;border-bottom:2px solid transparent}
+.tabs button.on{color:var(--navy);border-color:var(--saffron);font-weight:600}
+.empty{color:var(--grey);font-style:italic;padding:14px 0}
+.error-banner{background:#F6DEDE;color:var(--bad);border:1px solid var(--bad);border-radius:6px;padding:10px 12px;margin:10px 0;font-size:.9em}
+footer{color:var(--grey);font-size:.82em;text-align:center;padding:20px}
